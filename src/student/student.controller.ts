@@ -18,4 +18,22 @@ export class StudentController {
   async createStudent(@Body() data: Partial<Student>): Promise<Student> {
     return this.studentService.createStudent(data);
   }
+
+  @Get()
+  async getStudents(): Promise<Student[]> {
+    return this.studentService.getStudents();
+  }
+
+  @Get(':id')
+  async getStudentByID(@Param('id') id: number): Promise<Student> {
+    return this.studentService.getStudentById(id);
+  }
+
+  @Put(':id')
+  async updateStudent(
+    @Param('id') id: number,
+    @Body() data: Partial<Student>,
+  ): Promise<Student> {
+    return this.studentService.updateStudent(id, data);
+  }
 }
